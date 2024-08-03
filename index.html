@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Fresnel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00796b;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    h3 {
+      margin-bottom: 20px;
+      color: #00796b;
+    }
+
+    .form-floating {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-floating label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #004d40;
+    }
+
+    .form-floating input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #b2dfdb;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-floating input:focus {
+      border-color: #00796b;
+      outline: none;
+    }
+
+    .btn {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #004d40;
+    }
+
+    .result {
+      margin-top: 30px;
+      color: #00796b;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+    }
+
+    .result.visible {
+      visibility: visible;
+    }
+
+    .result h4 {
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Calculadora de Fresnel</h1>
+  </header>
+  <div class="container">
+    <div class="form-floating">
+      <label for="distancia">Ingrese la distancia en kilómetros</label>
+      <input type="number" id="distancia" placeholder="Kilómetros">
+    </div>
+    <div class="form-floating">
+      <label for="frecuencia">Ingrese la frecuencia (GHz)</label>
+      <input type="number" id="frecuencia" placeholder="Frecuencia">
+    </div>
+    <button type="button" class="btn" onclick="calcularFresnel()">Calcular</button>
+    <div class="result" id="resultContainer">
+      <h4 id="resultado">El radio es de 0.00 metros.</h4>
+    </div>
+  </div>
+  <footer>Marcos Irazoqui - Itec Río Cuarto 2024</footer>
+
+  <script>
+    function calcularFresnel() {
+      let distancia = document.getElementById('distancia').value;
+      let frecuencia = document.getElementById('frecuencia').value;
+      let resultElement = document.getElementById('resultado');
+      let resultContainer = document.getElementById('resultContainer');
+      let resultado = (8.656 * Math.sqrt(distancia / frecuencia)).toFixed(2);
+      resultElement.innerHTML = `El radio es de ${resultado} metros.`;
+      resultContainer.classList.add('visible');
+    }
+  </script>
+</body>
+
+</html>
