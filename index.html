@@ -140,7 +140,7 @@
       let frecuencia = document.getElementById('frecuencia').value;
       let resultElement = document.getElementById('resultado');
       let resultContainer = document.getElementById('resultContainer');
-      let resultado = (8.656 * Math.sqrt(distancia / frecuencia)).toFixed(4);
+      let resultado = Math.floor(8.656 * Math.sqrt(distancia / frecuencia) * 10000) / 10000;
       resultElement.innerHTML = `El radio es de ${resultado} metros.`;
       resultContainer.classList.add('visible');
     }
